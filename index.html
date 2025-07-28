@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+        }
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
+            <span class="text-blue-600">Fake News</span> Detector
+        </h1>
+
+        <div class="mb-6">
+            <label for="newsArticle" class="block text-gray-700 text-lg font-semibold mb-2">Enter News Article:</label>
+            <textarea id="newsArticle"
+                      class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out text-gray-800 text-base"
+                      rows="10"
+                      placeholder="Paste your news article here to check if it's fake or genuine..."></textarea>
+        </div>
+
+        <button id="predictButton"
+                class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-bold text-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+            Predict News Authenticity
+        </button>
+
+        <div id="loadingIndicator" class="text-center mt-4 text-blue-500 font-medium hidden">
+            Analyzing news...
+        </div>
+
+        <div id="predictionResults" class="mt-8 space-y-4">
+            <h2 class="text-2xl font-semibold text-gray-800 text-center mb-4">Prediction Results:</h2>
+            <div id="lrResult" class="bg-blue-50 p-4 rounded-lg border border-blue-200 text-blue-800 font-medium text-lg hidden">
+                <span class="font-bold">Logistic Regression:</span> <span class="result-text"></span>
+            </div>
+            <div id="dtcResult" class="bg-green-50 p-4 rounded-lg border border-green-200 text-green-800 font-medium text-lg hidden">
+                <span class="font-bold">Decision Tree:</span> <span class="result-text"></span>
+            </div>
+            <div id="rfcResult" class="bg-purple-50 p-4 rounded-lg border border-purple-200 text-purple-800 font-medium text-lg hidden">
+                <span class="font-bold">Random Forest:</span> <span class="result-text"></span>
+            </div>
+            <div id="gbcResult" class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 text-yellow-800 font-medium text-lg hidden">
+                <span class="font-bold">Gradient Boosting:</span> <span class="result-text"></span>
+            </div>
+            <div id="errorMessage" class="bg-red-100 p-4 rounded-lg border border-red-300 text-red-800 font-medium text-lg hidden">
+                <span class="font-bold">Error:</span> <span class="error-message-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
